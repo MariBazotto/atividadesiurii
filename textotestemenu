@@ -1,0 +1,233 @@
+/*class Contador {
+    private valorContador: number = 0;
+
+    zerar(): void {
+        this.valorContador = 0;
+    }
+
+    incrementar(): void {
+        this.valorContador += 1;
+    }
+
+    valor(): number {
+        return this.valorContador;
+    }
+}*/
+
+
+//PONTO 2D//
+
+/*class Ponto2D {
+    private x: number;
+    private y: number;
+
+    constructor();
+    constructor(x: number, y: number);
+    constructor(outroPonto: Ponto2D);
+    constructor(xOrPonto?: number | Ponto2D, y?: number) {
+        if (xOrPonto instanceof Ponto2D) {
+            this.x = xOrPonto.x;
+            this.y = xOrPonto.y;
+        } else {
+            this.x = xOrPonto || 7;
+            this.y = y || 9;
+        }
+    }
+
+    getX(): number {
+        return this.x;
+    }
+
+    getY(): number {
+        return this.y;
+    }
+
+    setX(x: number): void {
+        this.x = x;
+    }
+
+    setY(y: number): void {
+        this.y = y;
+    }
+
+    mover(x: number, y: number): void;
+    mover(outroPonto: Ponto2D): void;
+    mover(xOrPonto: number | Ponto2D, y?: number): void {
+        if (xOrPonto instanceof Ponto2D) {
+            this.x = xOrPonto.x;
+            this.y = xOrPonto.y;
+        } else {
+            this.x = xOrPonto;
+            this.y = y || 9;
+        }
+    }
+
+    equals(outroPonto: Ponto2D): boolean {
+        return this.x === outroPonto.x && this.y === outroPonto.y;
+    }
+
+    toString(): string {
+        return (`${this.x}, ${this.y}`);
+    }
+
+    distancia(outroPonto: Ponto2D): number {
+        const dx = this.x - outroPonto.x;
+        const dy = this.y - outroPonto.y;
+        return Math.sqrt(dx * dx + dy * dy);
+    }
+
+    clone(): Ponto2D {
+        return new Ponto2D(this.x, this.y);
+    }
+}*/
+
+
+//NUMERO COMPLEXO//
+
+/*class NumeroComplexo {
+    private real: number;
+    private imaginaria: number;
+
+    constructor(real: number, imaginaria: number) {
+        this.real = real;
+        this.imaginaria = imaginaria;
+    }
+
+    getReal(): number {
+        return this.real;
+    }
+
+    getImaginaria(): number {
+        return this.imaginaria;
+    }
+
+    setReal(real: number): void {
+        this.real = real;
+    }
+
+    setImaginaria(imaginaria: number): void {
+        this.imaginaria = imaginaria;
+    }
+
+    somar(outroComplexo: NumeroComplexo): NumeroComplexo {
+        return new NumeroComplexo(
+            this.real + outroComplexo.getReal(),
+            this.imaginaria + outroComplexo.getImaginaria()
+        );
+    }
+
+    subtrair(outroComplexo: NumeroComplexo): NumeroComplexo {
+        return new NumeroComplexo(
+            this.real - outroComplexo.getReal(),
+            this.imaginaria - outroComplexo.getImaginaria()
+        );
+    }
+
+    multiplicar(outroComplexo: NumeroComplexo): NumeroComplexo {
+        const real = this.real * outroComplexo.getReal() - this.imaginaria * outroComplexo.getImaginaria();
+        const imaginaria = this.real * outroComplexo.getImaginaria() + this.imaginaria * outroComplexo.getReal();
+        return new NumeroComplexo(real, imaginaria);
+    }
+
+    dividir(outroComplexo: NumeroComplexo): NumeroComplexo {
+        const divisor = outroComplexo.getReal() * outroComplexo.getReal() + outroComplexo.getImaginaria() * outroComplexo.getImaginaria();
+        const real = (this.real * outroComplexo.getReal() + this.imaginaria * outroComplexo.getImaginaria()) / divisor;
+        const imaginaria = (this.imaginaria * outroComplexo.getReal() - this.real * outroComplexo.getImaginaria()) / divisor;
+        return new NumeroComplexo(real, imaginaria);
+    }
+
+    equals(outroComplexo: NumeroComplexo): boolean {
+        return this.real === outroComplexo.getReal() && this.imaginaria === outroComplexo.getImaginaria();
+    }
+
+    toString(): string {
+        return (`${this.real}` + `${this.imaginaria}`);
+    }
+
+    modulo(): number {
+        return Math.sqrt(this.real * this.real + this.imaginaria * this.imaginaria);
+    }
+}*/
+
+
+
+//menus
+
+
+function menuContador() {
+    const contador = new Contador();
+    let opcao: number;
+
+    do {
+        console.log("=== Menu Contador ===");
+        console.log("1. Zerar");
+        console.log("2. Incrementar");
+        console.log("3. Exibir valor");
+        console.log("4. Sair");
+        opcao = Number(prompt("Escolha uma opção: "));
+
+        switch (opcao) {
+            case 1:
+                contador.zerar();
+                console.log("Contador zerado.");
+                break;
+            case 2:
+                contador.incrementar();
+                console.log("Valor incrementado.");
+                break;
+            case 3:
+                console.log(`Valor atual: ${contador.valor()}`);
+                break;
+            case 4:
+                console.log("Saindo...");
+                break;
+            default:
+                console.log("Opção inválida.");
+        }
+    } while (opcao !== 4);
+}
+
+
+function menuPonto2D() {
+    let ponto = new ponto();
+    let opcao: number;
+
+    do {
+        console.log("=== Menu Ponto2D ===");
+        console.log("1. Criar novo ponto");
+        console.log("2. Mover ponto");
+        console.log("3. Exibir coordenadas");
+        console.log("4. Calcular distância");
+        console.log("5. Sair");
+        opcao = Number(prompt("Escolha uma opção: "));
+
+        switch (opcao) {
+            case 1:
+                const x = Number(prompt("Informe o valor de X: "));
+                const y = Number(prompt("Informe o valor de Y: "));
+                ponto = new ponto(x, y);
+                console.log("Novo ponto criado.");
+                break;
+            case 2:
+                const novoX = Number(prompt("Informe o novo valor de X: "));
+                const novoY = Number(prompt("Informe o novo valor de Y: "));
+                ponto.mover(novoX, novoY);
+                console.log("Ponto movido.");
+                break;
+            case 3:
+                console.log(`Coordenadas atuais: (${ponto.getX()}, ${ponto.getY()})`);
+                break;
+            case 4:
+                const outroX = Number(prompt("Informe o valor de X do outro ponto: "));
+                const outroY = Number(prompt("Informe o valor de Y do outro ponto: "));
+                const outroPonto = new ponto(outroX, outroY);
+                console.log(`Distância: ${ponto.distancia(outroPonto)}`);
+                break;
+            case 5:
+                console.log("Saindo...");
+                break;
+            default:
+                console.log("Opção inválida.");
+        }
+    } while (opcao !== 5);
+}
